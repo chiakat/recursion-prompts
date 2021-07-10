@@ -51,6 +51,21 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  // do not use modulo.  even = no remainder when divided by 2
+  // edge case: if n is negative, make it positive
+  if (n < 0) {
+    n *= -1;
+  }
+  // base case is when n is 0 or 1
+  // if 0 return even, if 1 return odd
+  if (n === 0 || n === 1) {
+    if (n === 0) {
+      return true;
+    }
+    return false;
+  }
+  // subtract 2 from n until n is either 0 or 1
+  return isEven(n - 2);
 };
 
 // 5. Sum all integers below a given integer.
