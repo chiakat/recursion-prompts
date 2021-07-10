@@ -21,12 +21,33 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+  // base case = empty array
+  if (array.length === 0) {
+    return 0;
+  }
+  // recursive case = add the first element of the array to the sum
+  // then remove the first element from the array with every call
+  return array[0] + sum(array.slice(1));
 };
+
 
 // 3. Sum all numbers in an array containing nested arrays.
 // arraySum([1,[2,3],[[4]],5]); // 15
 var arraySum = function(array) {
+  // flatten array, then add all numbers inside flattened array
+  // check if item is an array;
+  sum = 0;
+  array.forEach(function (item) {
+    // base case: if the item is not an array, add to sum
+    if (!(Array.isArray(item))) {
+      return sum += item;
+    }
+    // if it is an array, call function again
+      return sum = sum + arraySum(item)
+    });
+  return sum;
 };
+
 
 // 4. Check if a number is even.
 var isEven = function(n) {
